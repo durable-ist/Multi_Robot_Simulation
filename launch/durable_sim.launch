@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<launch>
+
+    <include file="$(find durable_gazebo_simulation)/launch/multi_jackal.launch">
+    </include>
+
+    <include file="$(find durable_gazebo_simulation)/launch/multi_bebop.launch">
+    </include>
+    
+    <group>
+       <node pkg="tf" type="static_transform_publisher" name="static_map_odom_tf"
+         args="0 0 0 0 0 0 world map 20"/>
+    </group>
+
+
+</launch>
