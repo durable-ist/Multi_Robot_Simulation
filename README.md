@@ -1,1 +1,63 @@
-# DURABLE
+# DURABLE SIMULATION
+This branch is dedicated to create a Gazebo simulation environment, with a multiple UGV's and UAV's, which can be used by anyone working in the project. The aim is to have a rough simulation of the real scenario where algorithms can be tested. 
+The package created merges two other packages in the same simulation. These two packages are the [multi_jackal](http://wiki.ros.org/multi_jackal_tutorials) and [BebopS](https://github.com/gsilano/BebopS) which support multiple JACKAL robots from clearpath and multiple Bebop drones. 
+
+## INSTALLATION
+This Gazebo solution was integrated in ROS Kinetic with Ubuntu 16. Compatibility with other versions are not ensured but might work, by installing the corresponding versions of each package. A complete guide (including both the necessary packages) is described for ROS Kinetic:
+
+Create a ROS workspace by running:
+```
+mkdir -p ~/catkin_ws/src
+cd ~/catkin_ws/src
+catkin_init_workspace  # initialize your catkin workspace
+cd ~/catkin_ws/
+catkin build
+```
+
+### Multi_jackal
+This package can be installed by running:
+```
+cd ~/catkin_ws/src
+git clone https://github.com/NicksSimulationsROS/multi_jackal.git
+cd ~/catkin_ws/
+catkin build
+```
+
+In the case, the main Jackal package was not installed please install:
+```
+sudo apt-get install ros-kinetic-jackal-desktop
+```
+
+After successful installation, procede to the next package:
+
+### BebopS
+
+To install this package simply follow the instructions provided in the [BebopS link](https://github.com/gsilano/BebopS). Scroll until you find the correct ROS version. In any case, the commands to run are:
+
+```
+cd ~/catkin_ws/src
+git clone -b med18 https://github.com/gsilano/rotors_simulator.git
+git clone -b med18 https://github.com/gsilano/mav_comm.git
+git clone https://github.com/gsilano/BebopS.git
+git clone https://github.com/AutonomyLab/bebop_autonomy.git
+rosdep install --from-paths src -i
+catkin build
+```
+
+After successful installation, procede to the last package:
+
+### DURABLE simulation
+Lastly, install the DURABLE package by running:
+```
+cd ~/catkin_ws/src
+git clone https://github.com/JRosaa/DURABLE.git
+cd ~/catkin_ws/
+catkin build
+```
+
+## USAGE
+After the installation is finished, the package is ready to use. The Durable simulation consists only on joining launch files from the other packages in order to create a single gazebo environment. It is recomended to follow the same procedure when different environments are desired (with more or less robots of each type). An important note is that, the gazebo environment for the Bebop's is the one being used since it better replicates the physics required for UAV's (namely the presence of wind), and then Jackals are spawned into this environment. The default launch file has 4 Bebops and 3 Jackals, but this can be configured by changing/creating a new launch file. 
+
+To change the number of UAV please refer to the [multi_bebop.launch](launch/multi_bebop.launch) and to change the number of UGV's to [multi_jackal.launch](launch/multi_jackal.launch). These changes are made by following the structure already present in the code.
+
+Lastly, every robot creates its own namespaces with topics and its movement is controlled by each individual topic. For UGV use move base corresponding to the correct robot and for the UAV's follow Bebop website for the list of commands.
