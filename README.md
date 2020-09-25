@@ -13,6 +13,13 @@ catkin_init_workspace  # initialize your catkin workspace
 cd ~/catkin_ws/
 catkin build
 ```
+### Dependencies
+Open the terminal and run the following commands to install the dependencies required:
+```
+sudo apt-get install ros-kinetic-controller-manager ros-kinetic-interactive-markers-twist-server ros-kinetic-gazebo-ros-control ros-kinetic-hector-gazebo-plugins
+sudo apt-get install ros-kinetic-joint-state-controller ros-kinetic-diff-drive-controller ros-kinetic-pointgrey-camera-driver ros-kinetic-robot-localization ros-kinetic-move-base
+sudo apt-get install ros-kinetic-jackal-desktop
+```
 
 ### Multi_jackal
 This package can be installed by running:
@@ -21,11 +28,6 @@ cd ~/catkin_ws/src
 git clone https://github.com/NicksSimulationsROS/multi_jackal.git
 cd ~/catkin_ws/
 catkin build
-```
-
-In the case, the main Jackal package was not installed please install:
-```
-sudo apt-get install ros-kinetic-jackal-desktop
 ```
 
 After successful installation, procede to the next package:
@@ -40,6 +42,7 @@ git clone -b med18 https://github.com/gsilano/rotors_simulator.git
 git clone -b med18 https://github.com/gsilano/mav_comm.git
 git clone https://github.com/gsilano/BebopS.git
 git clone https://github.com/AutonomyLab/bebop_autonomy.git
+cd ~/catkin_ws/
 rosdep install --from-paths src -i
 catkin build
 ```
@@ -51,8 +54,13 @@ Lastly, install the DURABLE package by running:
 ```
 cd ~/catkin_ws/src
 git clone https://github.com/JRosaa/DURABLE.git
-cd ~/catkin_ws/
 catkin build
+```
+
+Finally, do not forget to source the environment
+```
+cd ~/catkin_ws/
+source devel/setup.bash
 ```
 
 ## USAGE
