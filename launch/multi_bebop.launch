@@ -27,12 +27,12 @@
     <arg name="enable_plots" default="false"/>
     <arg name="enable_imu" default="true"/>
 
-   <!-- Set up the Gazebo world -->
+   <!-- Set up the Gazebo world
   <env name="GAZEBO_MODEL_PATH" value="${GAZEBO_MODEL_PATH}:$(find bebop_simulator)/models"/>
   <env name="GAZEBO_RESOURCE_PATH" value="${GAZEBO_RESOURCE_PATH}:$(find bebop_simulator)/models"/>
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(find bebop_simulator)/worlds/$(arg world_name).world" />
-  </include>
+  </include> -->
 
   
    <!-- Launch Bebop_0 -->
