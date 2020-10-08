@@ -13,6 +13,13 @@ catkin_init_workspace  # initialize your catkin workspace
 cd ~/catkin_ws/
 catkin build
 ```
+### Dependencies
+Open the terminal and run the following commands to install the dependencies required:
+```
+sudo apt-get install ros-kinetic-controller-manager ros-kinetic-interactive-markers-twist-server ros-kinetic-gazebo-ros-control ros-kinetic-hector-gazebo-plugins
+sudo apt-get install ros-kinetic-joint-state-controller ros-kinetic-diff-drive-controller ros-kinetic-pointgrey-camera-driver ros-kinetic-robot-localization ros-kinetic-move-base
+sudo apt-get install ros-kinetic-jackal-desktop
+```
 
 ### Multi_jackal
 This package can be installed by running:
@@ -21,11 +28,6 @@ cd ~/catkin_ws/src
 git clone https://github.com/NicksSimulationsROS/multi_jackal.git
 cd ~/catkin_ws/
 catkin build
-```
-
-In the case, the main Jackal package was not installed please install:
-```
-sudo apt-get install ros-kinetic-jackal-desktop
 ```
 
 After successful installation, procede to the next package:
@@ -55,6 +57,7 @@ git clone -b med18 https://github.com/gsilano/rotors_simulator.git
 git clone -b med18 https://github.com/gsilano/mav_comm.git
 git clone https://github.com/gsilano/BebopS.git
 git clone https://github.com/AutonomyLab/bebop_autonomy.git
+cd ~/catkin_ws/
 rosdep install --from-paths src -i
 catkin build
 ```
@@ -66,14 +69,19 @@ Lastly, install the DURABLE package by running:
 ```
 cd ~/catkin_ws/src
 git clone https://github.com/JRosaa/DURABLE.git
-cd ~/catkin_ws/
 catkin build
+```
+
+Finally, do not forget to source the environment
+```
+cd ~/catkin_ws/
+source devel/setup.bash
 ```
 
 ## USAGE
 After the installation is finished, the package is ready to use. The Durable simulation consists only on joining launch files from the other packages in order to create a single gazebo environment. It is recomended to follow the same procedure when different environments are desired (with more or less robots of each type). An important note is that, the gazebo environment used is from clearpath gazebo package which has solar panels and then Jackals and UAV's are spawned into this environment. The default launch file has 4 Bebops and 3 Jackals, but this can be configured by changing/creating a new launch file. 
 
-To change the number of UAV please refer to the [multi_bebop.launch](launch/multi_bebop.launch) and to change the number of UGV's to [multi_jackal.launch](launch/multi_jackal.launch). These changes are made by following the structure already present in the code.
+To change the number of UAV please refer to the [multi_bebop.launch](launch/multi_bebop.launch) and to change the number of UGV's to [multi_jackal.launch](launch/multi_jackal.launch). These changes are made by following the structure already present in the code. In order to integrate both packages, it was necessary to publish a static transform from world to map. This is present in the created launch file.
 
 Two launch files, with different environments were created. To switch between both, change the corresponding launch file in the [durable_sim.launch](launch/durable_sim.launch) which is the file to launch:
 
