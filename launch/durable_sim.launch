@@ -2,7 +2,7 @@
 
 <launch>
 
-<!-- switch the next launch file for different environments. solar is the one eddited only with solar panels and no textures.  agriculture_world is the native clearpath environment. -->
+<!-- switch the next launch file for different environments. solar_farm is the one eddited only with solar panels only.  agriculture_world is the native clearpath environment. -->
     <include file="$(find durable_gazebo_simulation)/launch/solar.launch">
     </include>
 
