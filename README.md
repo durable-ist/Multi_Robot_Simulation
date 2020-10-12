@@ -16,6 +16,7 @@ catkin build
 ### Dependencies
 Open the terminal and run the following commands to install the dependencies required:
 ```
+sudo apt-get install ros-kinetic-timed-roslaunch
 sudo apt-get install ros-kinetic-controller-manager ros-kinetic-interactive-markers-twist-server ros-kinetic-gazebo-ros-control ros-kinetic-hector-gazebo-plugins
 sudo apt-get install ros-kinetic-joint-state-controller ros-kinetic-diff-drive-controller ros-kinetic-pointgrey-camera-driver ros-kinetic-robot-localization ros-kinetic-move-base
 sudo apt-get install ros-kinetic-jackal-desktop
