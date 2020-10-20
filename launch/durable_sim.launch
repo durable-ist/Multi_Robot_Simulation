@@ -8,7 +8,7 @@
 
 
     <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
-      <arg name="time" value="2" />
+      <arg name="time" value="1" />
       <arg name="pkg" value="durable_gazebo_simulation" />
       <arg name="file" value="multi_jackal.launch" />
     </include>
@@ -17,16 +17,16 @@
     </include> -->
 
     <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
-      <arg name="time" value="1" />
+      <arg name="time" value="2" />
       <arg name="pkg" value="durable_gazebo_simulation" />
       <arg name="file" value="multi_bebop.launch" />
     </include>
 
-    <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
-      <arg name="time" value="3" />
+    <!-- <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
+      <arg name="time" value="10" />
       <arg name="pkg" value="durable_gazebo_simulation" />
       <arg name="file" value="jackal_waypoint.launch" />
-    </include>
+    </include> -->
 
     <!-- <include file="$(find durable_gazebo_simulation)/launch/multi_bebop.launch">
     </include> -->

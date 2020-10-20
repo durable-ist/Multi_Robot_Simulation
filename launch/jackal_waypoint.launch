@@ -1,7 +1,5 @@
 <?xml version="1.0"?>
 
 <launch>
-
     <node name="jackal_waypoint_publisher" pkg="durable_gazebo_simulation" type="jackal_waypoint_publisher.py" args="$(find durable_gazebo_simulation)/scripts/waypoints.txt" output="screen" />
-
 </launch>

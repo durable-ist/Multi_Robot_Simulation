@@ -73,7 +73,7 @@ class Waypoint_Publish:
     for item in self.result_dict:
       if item in data.status.goal_id.id:
         self.result_dict[item] = True
-        print "result handle detected"
+        print str(item) + " result handle detected"
 
   def execute(self):
     threads = []
@@ -83,6 +83,7 @@ class Waypoint_Publish:
       x.start()
     for x in threads:
       x.join()
+    rospy.loginfo("waypoint publishing finished successfully")
     rospy.signal_shutdown("waypoint publishing finished")
 
 def main(args):
