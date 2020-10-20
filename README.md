@@ -82,7 +82,7 @@ source devel/setup.bash
 ## USAGE
 After the installation is finished, the package is ready to use. The Durable simulation consists only on joining launch files from the other packages in order to create a single gazebo environment. It is recomended to follow the same procedure when different environments are desired (with more or less robots of each type). An important note is that, the gazebo environment used is from clearpath gazebo package which has solar panels and then Jackals and UAV's are spawned into this environment. The default launch file has 4 Bebops and 3 Jackals, but this can be configured by changing/creating a new launch file. 
 
-To change the number of UAV please refer to the [multi_bebop.launch](launch/multi_bebop.launch) and to change the number of UGV's to [multi_jackal.launch](launch/multi_jackal.launch). These changes are made by following the structure already present in the code. In order to integrate both packages, it was necessary to publish a static transform from world to map. This is present in the created launch file.
+To change the number of UAV please refer to the [multi_bebop.launch](launch/multi_bebop.launch) and to change the number of UGV's to [multi_jackal.launch](launch/multi_jackal.launch). These changes are made by following the structure already present in the code. In order to integrate both packages, it was necessary to publish a static transform from world to map. This is present in the [created launch file](launch/durable_sim.launch).
 
 Two launch files, with different environments were created. To switch between both, change the corresponding launch file in the [durable_sim.launch](launch/durable_sim.launch) which is the file to launch:
 
@@ -92,3 +92,15 @@ roslaunch durable_gazebo_simulation durable_sim.launch
 Additionally, you can change the mesh used for the environment in the file [solar.urdf.xacro](urdf/solar.urdf.xacro). Currently, there are two alternative meshes. These are to be used when calling the custom environment and not the native cpr.
 
 Lastly, every robot creates its own namespaces with topics and its movement is controlled by each individual topic. For UGV use move base corresponding to the correct robot and for the UAV's follow Bebop website for the list of commands.
+
+### Jackal Waypoint Publisher
+It has been implemented a [node](scripts/jackal_waypoint_publisher.py) to create waypoints for each of the jackals. This node is launched by running:
+```
+roslaunch durable_gazebo_simulation jackal_waypoint.launch 
+```
+The file which contains the waypoints of the robots is [waypoints.txt](scripts/waypoints.txt). This file must comply with the structure described in the first line
+```
+"Robot name and following lines have coordinates x,y,z roll,pitch,yaw and time which is the time the robot holds the position before moving to the next waypoint"
+```
+where there is a line with the robot name (same as the name for the jackal being spawned) and the others are coordinates in x,y,z roll,pitch,yaw. Lastly, there is a field for the time which the robot is to keep its position. 
+During the waypoints it is possible to track the status of the robots via command line. 
