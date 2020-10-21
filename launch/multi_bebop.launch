@@ -87,7 +87,7 @@
 
     <!-- Launch the trajectory generator for Bebop_0 -->
    <group ns="$(arg name)0">
-       <node name="waypoint_example" pkg="bebop_simulator" type="waypoint_example" output="screen" args="$(find bebop_simulator)/resource/waypoints0.txt"/>
+       <node name="waypoint_example" pkg="bebop_simulator" type="waypoint_example" output="screen" args="$(find durable_gazebo_simulation)/resources/bebop_waypoints0.txt"/>
     </group>
     </group>
 
@@ -143,7 +143,7 @@
 
     <!-- Launch the trajectory generator for Bebop_1-->
    <group ns="$(arg name)1">
-       <node name="waypoint_example" pkg="bebop_simulator" type="waypoint_example" output="screen" args="$(find bebop_simulator)/resource/waypoints1.txt"/>
+       <node name="waypoint_example" pkg="bebop_simulator" type="waypoint_example" output="screen" args="$(find durable_gazebo_simulation)/resources/bebop_waypoints1.txt"/>
     </group>
     </group>
 
@@ -199,7 +199,7 @@
 
     <!-- Launch the trajectory generator for Bebop_2 -->
    <group ns="$(arg name)2">
-       <node name="waypoint_example" pkg="bebop_simulator" type="waypoint_example" output="screen" args="$(find bebop_simulator)/resource/waypoints2.txt"/>
+       <node name="waypoint_example" pkg="bebop_simulator" type="waypoint_example" output="screen" args="$(find durable_gazebo_simulation)/resources/bebop_waypoints2.txt"/>
     </group>
     </group>
 
@@ -255,7 +255,7 @@
 
     <!-- Launch the trajectory generator for Bebop_3 -->
    <group ns="$(arg name)3">
-       <node name="waypoint_example" pkg="bebop_simulator" type="waypoint_example" output="screen" args="$(find bebop_simulator)/resource/waypoints3.txt"/>
+       <node name="waypoint_example" pkg="bebop_simulator" type="waypoint_example" output="screen" args="$(find durable_gazebo_simulation)/resources/bebop_waypoints3.txt"/>
     </group>
     </group>
 

@@ -31,6 +31,12 @@ cd ~/catkin_ws/
 catkin build
 ```
 
+After fully installing the Durable simulation package and launching it, there might be an error ("GazeboRosControlPlugin missing <legacyModeNS>") which is fixed by uncommenting the line:
+
+```
+<legacyModeNS>true</legacyModeNS>
+```
+in the file multi_jackal/multi_jackal_description/urdf/jackal.gazebo
 After successful installation, procede to the next package:
 
 ### cpr_gazebo
@@ -82,7 +88,9 @@ source devel/setup.bash
 ## USAGE
 After the installation is finished, the package is ready to use. The Durable simulation consists only on joining launch files from the other packages in order to create a single gazebo environment. It is recomended to follow the same procedure when different environments are desired (with more or less robots of each type). An important note is that, the gazebo environment used is from clearpath gazebo package which has solar panels and then Jackals and UAV's are spawned into this environment. The default launch file has 4 Bebops and 3 Jackals, but this can be configured by changing/creating a new launch file. 
 
-To change the number of UAV please refer to the [multi_bebop.launch](launch/multi_bebop.launch) and to change the number of UGV's to [multi_jackal.launch](launch/multi_jackal.launch). These changes are made by following the structure already present in the code. In order to integrate both packages, it was necessary to publish a static transform from world to map. This is present in the [created launch file](launch/durable_sim.launch).
+To change the number and initial pose of UAV please refer to the [multi_bebop.launch](launch/multi_bebop.launch) and to change the number and initial pose of UGV's to [multi_jackal.launch](launch/multi_jackal.launch). These changes are made by following the structure already present in the code. In order to integrate both packages, it was necessary to publish a static transform from world to map. This is present in the [created launch file](launch/durable_sim.launch).
+
+For the UAV's waypoints change the files present in the resources.
 
 Two launch files, with different environments were created. To switch between both, change the corresponding launch file in the [durable_sim.launch](launch/durable_sim.launch) which is the file to launch:
 
@@ -98,7 +106,7 @@ It has been implemented a [node](scripts/jackal_waypoint_publisher.py) to create
 ```
 roslaunch durable_gazebo_simulation jackal_waypoint.launch 
 ```
-The file which contains the waypoints of the robots is [waypoints.txt](scripts/waypoints.txt). This file must comply with the structure described in the first line
+The file which contains the waypoints of the robots is [jackal_waypoints.txt](resources/jackal_waypoints.txt). This file must comply with the structure described in the first line
 ```
 "Robot name and following lines have coordinates x,y,z roll,pitch,yaw and time which is the time the robot holds the position before moving to the next waypoint"
 ```
