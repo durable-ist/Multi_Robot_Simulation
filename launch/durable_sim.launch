@@ -4,6 +4,7 @@
 
 <!-- switch the next launch file for different environments. solar_farm is the one eddited only with solar panels only.  agriculture_world is the native clearpath environment. -->
     <include file="$(find durable_gazebo_simulation)/launch/solar.launch">
+      <arg name="gui" default="true" />
     </include>
 
 

@@ -8,11 +8,11 @@
   <arg name="ns0"        default="jackal0"/>
   <arg name="ns1"        default="jackal1"/>
   <arg name="ns2"        default="jackal2"/>
-  <arg name="config0"    default="front_bumblebee2"/>
+  <arg name="config0"    default="front_laser"/>
   <arg name="config0_id" default="0"/>
   <arg name="config1"    default="front_laser"/>
   <arg name="config1_id" default="1"/>
-  <arg name="config2"    default="front_laser"/>
+  <arg name="config2"    default="front_bumblebee2"/>
   <arg name="config2_id" default="0"/>
   
   <!-- Spawn the robots. -->
