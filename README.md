@@ -140,3 +140,12 @@ open the file **_jackal.urdf.xacro_** with your prefered editor and copy the fol
 
 Velodyne configuration is done by editing the previous lines. If you have GPU set the GPS to "true".
 In the case the Velodyne is not necessary, comment it out from the **_jackal.urdf.xacro_**
+
+## SIM_ATRV branch
+This branch has included the atrvjr + ur5e robot in the environment. To use this branch another package is required:
+```
+cd ~/catkin_ws/src
+git clone https://github.com/joaocabogon/atrv_ur5e.git
+catkin build
+```
+For this branch a new launch file was added [durable_sim_atrv.launch](launch/durable_sim_atrv.launch). This launch file will spawn the atrv in the simulation environment described before.
