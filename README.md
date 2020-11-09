@@ -112,3 +112,31 @@ The file which contains the waypoints of the robots is [jackal_waypoints.txt](re
 ```
 where there is a line with the robot name (same as the name for the jackal being spawned) and the others are coordinates in x,y,z roll,pitch,yaw. Lastly, there is a field for the time which the robot is to keep its position. 
 During the waypoints it is possible to track the status of the robots via command line. 
+
+
+### Adding Velodyne sensor to the Jackals
+In order to add the Velodyne there are some required dependencies as well as some changes to the jackal urdf file.
+
+Dependencies:
+```
+sudo apt-get install ros-kinetic-velodyne ros-kinetic-velodyne-*
+```
+
+Now, it is necessary to add the velodyne to the urdf robot model. This is done in the previous installed package, multi jackal:
+```
+cd ~/catkin_ws/src
+cd multi_jackal
+cd multi_jackal_description
+cd urdf 
+```
+
+open the file **_jackal.urdf.xacro_** with your prefered editor and copy the following lines just before the **_</robot>_** in the last line:
+```  
+  <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro"/>
+  <VLP-16 parent="base_link" name="velodyne" topic="$(arg namespace)/velodyne_points" hz="10" samples="360" gpu="false" lasers="16" max_range="50">
+    <origin xyz="0 0 0.2" rpy="0 0 0" />
+  </VLP-16>
+```
+
+Velodyne configuration is done by editing the previous lines. If you have GPU set the GPS to "true".
+In the case the Velodyne is not necessary, comment it out from the **_jackal.urdf.xacro_**
