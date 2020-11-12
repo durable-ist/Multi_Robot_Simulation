@@ -137,9 +137,30 @@ open the file **_jackal.urdf.xacro_** with your prefered editor and copy the fol
     <origin xyz="0 0 0.2" rpy="0 0 0" />
   </VLP-16>
 ```
-
 Velodyne configuration is done by editing the previous lines. If you have GPU set the GPS to "true".
 In the case the Velodyne is not necessary, comment it out from the **_jackal.urdf.xacro_**
+
+### Adding Realsense D435 sensor to the Jackals
+This package requires [PAL robotics Gazebo package](https://github.com/pal-robotics/realsense_gazebo_plugin/tree/kinetic-devel). Install this package with the following commands:
+```
+cd ~/catkin_ws/src
+git clone https://github.com/pal-robotics/realsense_gazebo_plugin.git
+cd realsense_gazebo_plugin/
+git checkout kinetic-devel
+cd ~/catkin_ws/
+catkin build
+```
+
+After installation follow the instructions [here](https://github.com/pal-robotics/realsense_gazebo_plugin/issues/7). 
+The files copied should be added to the multi_jackal_description/urdf folder that should already be installed. Similarly to the Velodyne, you will need to edit the **_jackal.urdf.xacro_** file and add the following lines:
+```  
+  <xacro:include filename="$(find multi_jackal_description)/urdf/_d435.urdf.xacro" />
+  <sensor_d435 parent="base_link" name="rs_d435" topics_ns="$(arg namespace)/rs_d435" >
+    <origin xyz="0.4 0 0.2" rpy="0 0 0" />
+  </sensor_d435>
+```
+These lines will add the camera to the front of each jackal and namespace each topic. Any configurations should be done in these lines.
+In the case the Realsense is not necessary, comment it out from the **_jackal.urdf.xacro_**
 
 ## SIM_ATRV branch
 This branch has included the atrvjr + ur5e robot in the environment. To use this branch another package is required:
