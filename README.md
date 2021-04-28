@@ -98,6 +98,14 @@ roslaunch durable_gazebo_simulation spawn_mavros_instance.launch
 
 Lastly, every robot creates its own namespaces with topics and its movement is controlled by each individual topic. For UGV use move base corresponding to the correct robot and for the UAV perform commands through mavros and ardupilot.
 
+To control the UAV you can send commands throught the second terminal:
+example:
+```
+mode guided
+arm throttle
+takeoff 15
+```
+
 ### Jackal Waypoint Publisher
 It has been implemented a [node](scripts/jackal_waypoint_publisher.py) to create waypoints for each of the jackals. This node is launched by running:
 ```
