@@ -8,7 +8,6 @@ project(durable_gazebo_simulation)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  bebop_simulator
   multi_jackal_tutorials
 )
 
@@ -104,7 +103,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES durable_gazebo_simulation
-#  CATKIN_DEPENDS bebop_simulator multi_jackal_tutorials
+#  CATKIN_DEPENDS multi_jackal_tutorials
 #  DEPENDS system_lib
 )
 

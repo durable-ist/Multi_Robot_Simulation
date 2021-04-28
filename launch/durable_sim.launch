@@ -7,20 +7,12 @@
       <arg name="gui" default="true" />
     </include>
 
-
     <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
       <arg name="time" value="1" />
       <arg name="pkg" value="multi_jackal_tutorials" />
       <arg name="file" value="multi_jackal.launch" />
     </include>
 
-
-    <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
-      <arg name="time" value="2" />
-      <arg name="pkg" value="durable_gazebo_simulation" />
-      <arg name="file" value="multi_bebop.launch" />
-    </include>
-    
     <group>
        <node pkg="tf" type="static_transform_publisher" name="static_map_odom_tf"
          args="0 0 0 0 0 0 world map 20"/>

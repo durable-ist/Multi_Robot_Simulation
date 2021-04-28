@@ -13,11 +13,6 @@
       <arg name="file" value="multi_jackal.launch" />
     </include>
 
-    <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
-      <arg name="time" value="2" />
-      <arg name="pkg" value="durable_gazebo_simulation" />
-      <arg name="file" value="multi_bebop.launch" />
-    </include>
     
     <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
       <arg name="time" value="5" />
