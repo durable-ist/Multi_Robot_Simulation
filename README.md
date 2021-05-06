@@ -176,7 +176,7 @@ In the case the Realsense is not necessary, comment it out from the **_jackal.ur
 This branch has included the atrvjr + ur5e robot in the environment. To use this branch another package is required:
 ```
 cd ~/catkin_ws/src
-git clone https://github.com/joaocabogon/atrv_ur5e.git
+git clone https://github.com/JRosaa/atrv_ur5e.git
 catkin build
 ```
 For this branch a new launch file was added [durable_sim_atrv.launch](launch/durable_sim_atrv.launch). This launch file will spawn the atrv in the simulation environment described before.
