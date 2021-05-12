@@ -19,7 +19,7 @@ Open the terminal and run the following commands to install the dependencies req
 sudo apt-get install ros-kinetic-timed-roslaunch
 sudo apt-get install ros-kinetic-controller-manager ros-kinetic-interactive-markers-twist-server ros-kinetic-gazebo-ros-control ros-kinetic-hector-gazebo-plugins
 sudo apt-get install ros-kinetic-joint-state-controller ros-kinetic-diff-drive-controller ros-kinetic-pointgrey-camera-driver ros-kinetic-robot-localization ros-kinetic-move-base
-sudo apt-get install ros-kinetic-jackal-desktop
+sudo apt-get install ros-kinetic-jackal-desktop ros-kinetic-mavros
 ```
 
 ### Multi_jackal
@@ -182,7 +182,7 @@ In the case the Realsense is not necessary, comment it out from the **_jackal.ur
 This branch has included the atrvjr + ur5e robot in the environment. To use this branch another package is required:
 ```
 cd ~/catkin_ws/src
-git clone https://github.com/joaocabogon/atrv_ur5e.git
+git clone https://github.com/JRosaa/atrv_ur5e.git
 catkin build
 ```
 For this branch a new launch file was added [durable_sim_atrv.launch](launch/durable_sim_atrv.launch). This launch file will spawn the atrv in the simulation environment described before.
