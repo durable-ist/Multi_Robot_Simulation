@@ -70,7 +70,13 @@ Lastly, install the DURABLE package by running:
 ```
 cd ~/catkin_ws/src
 git clone https://github.com/JRosaa/DURABLE.git
+git checkout ardupilot_sim
 catkin build
+```
+
+Add the path to new gazebo models by adding the following line in bashrc (don't forget to adjust to your path and reload terminals)
+```
+export GAZEBO_MODEL_PATH=~/catkin_ws/src/durable_gazebo_simulation/models:${GAZEBO_MODEL_PATH}
 ```
 
 Finally, do not forget to source the environment
