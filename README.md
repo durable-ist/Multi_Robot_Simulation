@@ -133,7 +133,7 @@ Dependencies:
 sudo apt-get install ros-kinetic-velodyne ros-kinetic-velodyne-*
 ```
 
-UPDATE: The following section is already done. It was kept for better understanding of what was performed.
+UPDATE: The following section is already done. It was kept for better understanding of what was performed. Just need to uncomment
 
 Now, it is necessary to add the velodyne to the urdf robot model. This is done in the previous installed package, multi jackal:
 ```
@@ -165,7 +165,7 @@ cd ~/catkin_ws/
 catkin build
 ```
 
-UPDATE: The following section is already done. It was kept for better understanding of what was performed.
+UPDATE: The following section is already done. It was kept for better understanding of what was performed. Just need to uncomment
 
 After installation follow the instructions [here](https://github.com/pal-robotics/realsense_gazebo_plugin/issues/7). 
 The files copied should be added to the multi_jackal_description/urdf folder that should already be installed. Similarly to the Velodyne, you will need to edit the **_jackal.urdf.xacro_** file and add the following lines:
@@ -186,3 +186,30 @@ git clone https://github.com/JRosaa/atrv_ur5e.git
 catkin build
 ```
 For this branch a new launch file was added [durable_sim_atrv.launch](launch/durable_sim_atrv.launch). This launch file will spawn the atrv in the simulation environment described before.
+
+# Moving the ur5e arm in simulation
+
+Once the launch file has been started:
+- click ENTER 
+- write "use manipulator"
+Once the moveit commander manipulator has launched, it is possible to use commands to move the arm to pre-defined positions. Such as:
+- go front
+- go up
+- go home
+
+These positions can be configured in:
+atrv_ur5e/universal_robot-ur_e_fix/ur5_e_moveit_config_joao/config
+ín the files 
+- atrv_ur5e.srdf
+- ur5e.srdf
+
+Alternatively 
+
+commands can be given using the following rostopics (check for namespaces):
+
+send joint positions to this topic
+- armIKpipeline/target_pose
+
+Once the target position is set send the string 'e_start' to the following topics
+- pregrasp_pipeline_event_in
+- pregrasp_pipeline_move_arm_planned_motion/event_in
