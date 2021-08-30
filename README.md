@@ -213,3 +213,12 @@ send joint positions to this topic
 Once the target position is set send the string 'e_start' to the following topics
 - pregrasp_pipeline_event_in
 - pregrasp_pipeline_move_arm_planned_motion/event_in
+
+
+## Changing Gazebo GPS coordinates
+
+In order to change the location of the robots in its GPS topics there are two seperate files (one for Jackals, the other for the UAV):
+
+Jackal: In the multi_jackal/multi_jackal_description/urf/jackal.gazebo change the parameters  <referenceLatitude> and</referenceLongitude>
+
+UAV: In the ardupilot/Tools/autotest package change the file "locations.txt". Here you can add or switch existing locations which are called when launching the ardupilot SITL.
