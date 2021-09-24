@@ -2,8 +2,8 @@
 This branch is dedicated to create a Gazebo simulation environment, with a multiple UGV's and UAV's, which can be used by anyone working in the project. The aim is to have a rough simulation of the real scenario where algorithms can be tested. 
 The package created merges other packages in the same simulation. These three packages are the [multi_jackal](http://wiki.ros.org/multi_jackal_tutorials), [ardupilot](https://ardupilot.org/dev/docs/building-setup-linux.html#building-setup-linux) and [ardupilot_gazebo](https://github.com/SwiftGust/ardupilot_gazebo) which support multiple JACKAL robots from clearpath and a fully ardupilot simulated UAV. For the multi_jackal, a [forked package](https://github.com/JRosaa/multi_jackal.git) was created in order to facilitate installation and urdf file changes.
 
-![Gazebo simulation](https://github.com/durable-ist/Multi_Robot_Simulation/tree/ardupilot_sim/meshes/evora_sim.png)
-![Gazebo simulation](https://github.com/durable-ist/Multi_Robot_Simulation/tree/ardupilot_sim/meshes/evora_sim2.png)
+![Gazebo simulation](https://github.com/durable-ist/Multi_Robot_Simulation/tree/ardupilot_sim/meshes/evora_sim.png?raw=true)
+![Gazebo simulation](https://github.com/durable-ist/Multi_Robot_Simulation/tree/ardupilot_sim/meshes/evora_sim2.png?raw=true)
 
 ## INSTALLATION
 This Gazebo solution was integrated in ROS Kinetic with Ubuntu 16. Compatibility with other versions are not ensured but might work, by installing the corresponding versions of each package. A complete guide (including both the necessary packages) is described for ROS Kinetic:
