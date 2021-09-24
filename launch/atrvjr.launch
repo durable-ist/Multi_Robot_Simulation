@@ -11,7 +11,7 @@
     <arg name="model" default="$(find ur_e_description)/urdf/ur5e_robot.urdf.xacro"/>
     <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model) use_nominal_extrinsics:=true" />
 
-    <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model atrv_ur5e -x 3 -y 3 -z 0.1" respawn="false" output="screen" />
+    <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model atrv_ur5e -x 3 -y 3 -z -0.5" respawn="false" output="screen" />
 
     <rosparam file="$(find ur_e_gazebo)/controller/arm_controller_ur5e.yaml" command="load"/>
 
@@ -30,6 +30,11 @@
       <arg name="map" default="$(arg map)"/>
     </include>
 
+    <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization_global">
+      <rosparam command="load" file="$(find robot_localization)/params/ekf_template.yaml" />
+      <remap from="/atrvjr/odometry/filtered" to="/atrvjr/odometry/filtered/global"/>
+    </node>
+    
     <node name="moveit_commander" pkg="moveit_commander" type="moveit_commander_cmdline.py" output="screen"/>
 
   </group>

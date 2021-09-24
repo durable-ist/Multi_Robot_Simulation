@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<launch>
+
+<!-- switch the next launch file for different environments. solar_farm is the one eddited only with solar panels only.  agriculture_world is the native clearpath environment. -->
+    <include file="$(find durable_gazebo_simulation)/launch/evora_world.launch">
+      <arg name="gui" default="true" />
+    </include>
+
+    <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
+      <arg name="time" value="1" />
+      <arg name="pkg" value="multi_jackal_tutorials" />
+      <arg name="file" value="evora_jackal.launch" />
+    </include>
+
+    <include file="$(find durable_gazebo_simulation)/launch/atrvjr.launch"/>
+
+    <group>
+       <node pkg="tf" type="static_transform_publisher" name="static_map_odom_tf"
+         args="0 0 0 0 0 0 world map 20"/>
+    </group>
+
+</launch>
