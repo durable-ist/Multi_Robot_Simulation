@@ -58,7 +58,6 @@ class gps_converter:
                                        rospy.Duration(2.0)) #wait for 1 second
 
       goal.target_pose = tf2_geometry_msgs.do_transform_pose(goal.target_pose, transform)
-      #goal.target_pose.pose.position.x = -goal.target_pose.pose.position.x 
       goal.target_pose.header.stamp = rospy.Time.now()
       print "goal transformed\n", goal
       self.mb_client.send_goal(goal)
