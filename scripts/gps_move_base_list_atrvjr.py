@@ -23,12 +23,14 @@ class gps_converter:
   def execute(self, wp_file):
     with open(wp_file) as f:
       lista = f.read().splitlines()
-    key = raw_input("Press Enter to continue...")
+    key = raw_input("Press Enter to begin...")
     idx = 0
     lat, lon = lista[idx].split()
     lat = float(lat)
     lon = float(lon)
-    while(key != "Q" and key != "q"):
+    while(key != "Q" and key != "q" and not rospy.is_shutdown()):
+      print "----------------------------------------------------"
+      print "waypoin no: ", idx
       if self.waypoint_pub(lat, lon):
         if (len(lista) == idx + 1):
           print "all waypoints sent"
@@ -37,7 +39,7 @@ class gps_converter:
         lat, lon = lista[idx].split()
         lat = float(lat)
         lon = float(lon)
-      key = raw_input("Press Enter to continue...")
+      #key = raw_input("Press Enter to continue...")
     exit()
 
   def waypoint_pub(self, lat, lon):
@@ -62,7 +64,9 @@ class gps_converter:
       goal.target_pose.header.stamp = rospy.Time.now()
       print "goal transformed\n", goal
       self.mb_client.send_goal(goal)
-      return True
+      wait = self.mb_client.wait_for_result()
+      return wait
+
     except:
       print "Couldnt find transform from utm to map"
       return False
