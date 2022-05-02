@@ -30,7 +30,7 @@ sudo apt-get install ros-kinetic-jackal-desktop ros-kinetic-mavros
 This package can be installed by running:
 ```
 cd ~/catkin_ws/src
-git clone https://github.com/JRosaa/multi_jackal.git
+git clone https://github.com/durable-ist/multi_jackal.git
 cd ~/catkin_ws/
 catkin build
 ```
