@@ -22,7 +22,7 @@ Open the terminal and run the following commands to install the dependencies req
 ```
 sudo apt-get install ros-kinetic-timed-roslaunch
 sudo apt-get install ros-kinetic-controller-manager ros-kinetic-interactive-marker-twist-server ros-kinetic-gazebo-ros-control ros-kinetic-hector-gazebo-plugins
-sudo apt-get install ros-kinetic-joint-state-controller ros-kinetic-diff-drive-controller ros-kinetic-pointgrey-camera-driver ros-kinetic-robot-localization ros-kinetic-move-base
+sudo apt-get install ros-kinetic-joint-state-controller ros-kinetic-diff-drive-controller ros-kinetic-pointgrey-camera-driver ros-kinetic-robot-localization ros-kinetic-move-base ros-kinetic-serial ros-kinetic-joint-trajectory-controller ros-kinetic-moveit-core ros-kinetic-moveit-commander ros-kinetic-moveit-ros ros-kinetic-industrial-msgs
 sudo apt-get install ros-kinetic-jackal-desktop ros-kinetic-mavros
 ```
 
@@ -46,11 +46,11 @@ catkin build
 ```
 
 ## USAGE
-After the installation is finished, the package is ready to use. The Durable simulation consists only on joining launch files from the other packages in order to create a single gazebo environment. It is recomended to follow the same procedure when different environments are desired (with more or less robots of each type). An important note is that, the gazebo environment used is from clearpath gazebo package which has solar panels and then Jackals and UAV's are spawned into this environment. The default launch file has 1 UAV and 1 Jackal, but this can be configured by changing/creating a new launch file. 
+After the installation is finished, the package is ready to use. The Durable simulation consists only on joining launch files from the other packages in order to create a single gazebo environment. It is recomended to follow the same procedure when different environments are desired (with more or less robots of each type). An important note is that, the gazebo environment used is from clearpath gazebo package which has solar panels and then Jackals and ATRV are spawned into this environment. The default launch file has 1 ATRV and 1 Jackal, but this can be configured by changing/creating a new launch file. 
 
 To run the simulation, run the gazebo instance:
 ```
-roslaunch durable_gazebo_simulation durable_sim.launch 
+roslaunch durable_gazebo_simulation durable_evora.launch 
 ```
 
 Lastly, every robot creates its own namespaces with topics and its movement is controlled by each individual topic. For UGV use move base corresponding to the correct robot.
@@ -152,8 +152,6 @@ Once the target position is set send the string 'e_start' to the following topic
 
 ## Changing Gazebo GPS coordinates
 
-In order to change the location of the robots in its GPS topics there are two seperate files (one for Jackals, the other for the UAV):
+In order to change the location of the robots in its GPS topics there is a file for Jackals:
 
 Jackal: In the multi_jackal/multi_jackal_description/urf/jackal.gazebo change the parameters  <referenceLatitude> and</referenceLongitude>
-
-UAV: In the ardupilot/Tools/autotest package change the file "locations.txt". Here you can add or switch existing locations which are called when launching the ardupilot SITL.
