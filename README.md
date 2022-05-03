@@ -22,7 +22,7 @@ Open the terminal and run the following commands to install the dependencies req
 ```
 sudo apt-get install ros-kinetic-timed-roslaunch
 sudo apt-get install ros-kinetic-controller-manager ros-kinetic-interactive-marker-twist-server ros-kinetic-gazebo-ros-control ros-kinetic-hector-gazebo-plugins
-sudo apt-get install ros-kinetic-joint-state-controller ros-kinetic-diff-drive-controller ros-kinetic-pointgrey-camera-driver ros-kinetic-robot-localization ros-kinetic-move-base ros-kinetic-serial ros-kinetic-joint-trajectory-controller ros-kinetic-moveit-core ros-kinetic-moveit-commander ros-kinetic-moveit-ros ros-kinetic-industrial-msgs
+sudo apt-get install ros-kinetic-joint-state-controller ros-kinetic-diff-drive-controller ros-kinetic-pointgrey-camera-driver ros-kinetic-robot-localization ros-kinetic-move-base ros-kinetic-serial ros-kinetic-joint-trajectory-controller ros-kinetic-moveit* ros-kinetic-industrial-msgs ros-kinetic-pointcloud-to-laserscan ros-kinetic-global-planner ros-kinetic-dwa-local-planner
 sudo apt-get install ros-kinetic-jackal-desktop ros-kinetic-mavros
 ```
 
