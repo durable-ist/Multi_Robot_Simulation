@@ -1,6 +1,6 @@
 # DURABLE SIMULATION ARDUPILOT+MAVROS
-This branch is dedicated to create a Gazebo simulation environment, with a multiple UGV's and UAV's, which can be used by anyone working in the project. The aim is to have a rough simulation of the real scenario where algorithms can be tested. 
-The package created merges other packages in the same simulation. These three packages are the [multi_jackal](http://wiki.ros.org/multi_jackal_tutorials), [ardupilot](https://ardupilot.org/dev/docs/building-setup-linux.html#building-setup-linux) and [ardupilot_gazebo](https://github.com/SwiftGust/ardupilot_gazebo) which support multiple JACKAL robots from clearpath and a fully ardupilot simulated UAV. For the multi_jackal, a [forked package](https://github.com/JRosaa/multi_jackal.git) was created in order to facilitate installation and urdf file changes.
+This branch is dedicated to create a Gazebo simulation environment, with multiple UGV's only, which can be used by anyone working in the project. The aim is to have a rough simulation of the real scenario where algorithms can be tested. 
+The package created uses [multi_jackal](http://wiki.ros.org/multi_jackal_tutorials), which support multiple JACKAL robots from clearpath. For the multi_jackal, a [forked package](https://github.com/JRosaa/multi_jackal.git) was created in order to facilitate installation and urdf file changes.
 
 ![Gazebo simulation](https://raw.githubusercontent.com/durable-ist/Multi_Robot_Simulation/ardupilot_sim/meshes/evora_sim2.png)
 
@@ -37,84 +37,23 @@ catkin build
 
 After successful installation, procede to the next package:
 
-### cpr_gazebo
-
-Not used anymore, was implemented into the main package.
-
-After successful installation, procede to the next package:
-
-
-### ARDUPILOT
-
-Ardupilot https://github.com/ArduPilot/ardupilot/blob/master/BUILD.md (https://ardupilot.org/dev/docs/building-setup-linux.html#building-setup-linux)
-
-Follow git clone instructions
-install depencencies:
-```
-Tools/environment_install/install-prereqs-ubuntu.sh -y
-```
-Build with the following commands
-```
-./waf configure --board sitl --debug
-./waf copter
-```
-
-Finally, make sure you add the following location to the ardupilot/Tools/autotest/locations.txt file
-Evora=38.533617, -7.916481,232,0
-
-### ARDUPILOT Gazebo Plugin
-
-Gazebo plugin (https://github.com/SwiftGust/ardupilot_gazebo)
-Follow instructions in the link
-
-After successful installation, procede to the last package:
-
-### DURABLE simulation
-Lastly, install the DURABLE package by running:
+## SIM_ATRV branch
+This branch has included the atrvjr + ur5e robot in the environment. To use this branch another package is required:
 ```
 cd ~/catkin_ws/src
-git clone https://github.com/JRosaa/DURABLE.git
-git checkout ardupilot_sim
+git clone https://github.com/JRosaa/atrv_ur5e.git
 catkin build
 ```
 
-Add the path to new gazebo models by adding the following line in bashrc (don't forget to adjust to your path and reload terminals)
-```
-export GAZEBO_MODEL_PATH=~/catkin_ws/src/durable_gazebo_simulation/models:${GAZEBO_MODEL_PATH}
-```
-
-Finally, do not forget to source the environment
-```
-cd ~/catkin_ws/
-source devel/setup.bash
-```
-
 ## USAGE
-After the installation is finished, the package is ready to use. The Durable simulation consists only on joining launch files from the other packages in order to create a single gazebo environment. It is recomended to follow the same procedure when different environments are desired (with more or less robots of each type). An important note is that, the gazebo environment used is from clearpath gazebo package which has solar panels and then Jackals and UAV's are spawned into this environment. The default launch file has 1 UAV and 3 Jackals, but this can be configured by changing/creating a new launch file. For the UAV case, it is required to change the gazebo world file as well as run other instances od ardupilot, this is not employed here since it largely increases the gazebo computation cost.
+After the installation is finished, the package is ready to use. The Durable simulation consists only on joining launch files from the other packages in order to create a single gazebo environment. It is recomended to follow the same procedure when different environments are desired (with more or less robots of each type). An important note is that, the gazebo environment used is from clearpath gazebo package which has solar panels and then Jackals and UAV's are spawned into this environment. The default launch file has 1 UAV and 1 Jackal, but this can be configured by changing/creating a new launch file. 
 
-To run the simulation, 3 terminals are required.
-On the first run the gazebo instance:
+To run the simulation, run the gazebo instance:
 ```
 roslaunch durable_gazebo_simulation durable_sim.launch 
 ```
-On the second one run the UAV simulator, run this command from the ArduCopter folder in the ardupilot package (using Evora Power plant location, not required)
-```
-sim_vehicle.py -v ArduCopter -f gazebo-iris  -m --mav10 --map --console -I0 -L Evora
-```
-Lastly run mavros to have the UAV topics displayed
-```
-roslaunch durable_gazebo_simulation spawn_mavros_instance.launch
-```
 
-Lastly, every robot creates its own namespaces with topics and its movement is controlled by each individual topic. For UGV use move base corresponding to the correct robot and for the UAV perform commands through mavros and ardupilot.
-
-To control the UAV you can send commands throught the second terminal:
-example:
-```
-mode guided
-arm throttle
-takeoff 15
-```
+Lastly, every robot creates its own namespaces with topics and its movement is controlled by each individual topic. For UGV use move base corresponding to the correct robot.
 
 ### Jackal Waypoint Publisher
 It has been implemented a [node](scripts/jackal_waypoint_publisher.py) to create waypoints for each of the jackals. This node is launched by running:
@@ -182,14 +121,6 @@ The files copied should be added to the multi_jackal_description/urdf folder tha
 These lines will add the camera to the front of each jackal and namespace each topic. Any configurations should be done in these lines.
 In the case the Realsense is not necessary, comment it out from the **_jackal.urdf.xacro_**
 
-## SIM_ATRV branch
-This branch has included the atrvjr + ur5e robot in the environment. To use this branch another package is required:
-```
-cd ~/catkin_ws/src
-git clone https://github.com/JRosaa/atrv_ur5e.git
-catkin build
-```
-For this branch a new launch file was added [durable_sim_atrv.launch](launch/durable_sim_atrv.launch). This launch file will spawn the atrv in the simulation environment described before.
 
 # Moving the ur5e arm in simulation
 
