@@ -19,6 +19,6 @@
       <arg name="world_name" value="$(arg world_name)" />
     </include>
 
-    <node name="agriculture_world_spawner" pkg="gazebo_ros" type="spawn_model" args="-urdf -model agriculture_geom2 -param agriculture_geom2 -x 0 -y 0 -z 0 -Y 0" />
+    <node name="agriculture_world_spawner" pkg="gazebo_ros" type="spawn_model" args="-urdf -model agriculture_geom2 -param agriculture_geom2 -x -82.6 -y 110.5 -z -0.6 -Y 0" />
 
 </launch>
