@@ -1,4 +1,4 @@
-# DURABLE SIMULATION ARDUPILOT+MAVROS
+# DURABLE SIMULATION
 This branch is dedicated to create a Gazebo simulation environment, with multiple UGV's only, which can be used by anyone working in the project. The aim is to have a rough simulation of the real scenario where algorithms can be tested. 
 The package created uses [multi_jackal](http://wiki.ros.org/multi_jackal_tutorials), which support multiple JACKAL robots from clearpath. For the multi_jackal, a [forked package](https://github.com/JRosaa/multi_jackal.git) was created in order to facilitate installation and urdf file changes.
 
