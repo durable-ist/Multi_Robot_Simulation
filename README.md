@@ -37,8 +37,8 @@ catkin build
 
 After successful installation, procede to the next package:
 
-## SIM_ATRV branch
-This branch has included the atrvjr + ur5e robot in the environment. To use this branch another package is required:
+## ATRV files
+To use ATRV simulation, another package is required:
 ```
 cd ~/catkin_ws/src
 git clone https://github.com/JRosaa/atrv_ur5e.git
