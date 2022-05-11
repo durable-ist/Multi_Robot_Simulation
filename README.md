@@ -16,6 +16,7 @@ cd ~/catkin_ws/src
 catkin_init_workspace  # initialize your catkin workspace
 cd ~/catkin_ws/
 git clone https://github.com/durable-ist/Multi_Robot_Simulation.git
+cd Multi_Robot_Simulation
 git checkout ugvs
 catkin build
 ```
