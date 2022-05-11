@@ -44,7 +44,7 @@ After successful installation, procede to the next package:
 To use ATRV simulation, another package is required:
 ```
 cd ~/catkin_ws/src
-git clone https://github.com/JRosaa/atrv_ur5e.git
+git clone https://github.com/durable-ist/atrv_ur5e.git
 catkin build
 ```
 
