@@ -15,6 +15,8 @@ mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws/src
 catkin_init_workspace  # initialize your catkin workspace
 cd ~/catkin_ws/
+git clone https://github.com/durable-ist/Multi_Robot_Simulation.git
+git checkout ugvs
 catkin build
 ```
 ### Dependencies
