@@ -19,9 +19,9 @@
 
     <include file="$(find durable_gazebo_simulation)/launch/atrvjr.launch"/>
 
-    <!-- <group>
+    <group>
        <node pkg="tf" type="static_transform_publisher" name="static_world_to_map_tf"
-         args="0 0 0 0 0 0 world map 20"/>
-    </group> -->
+         args="0 0 0 0 0 0 map atrvjr/odom 20"/>
+    </group>
 
 </launch>
