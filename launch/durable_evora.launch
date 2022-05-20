@@ -15,6 +15,7 @@
       <arg name="time" value="1" />
       <arg name="pkg" value="multi_jackal_tutorials" />
       <arg name="file" value="evora_jackal.launch" />
+      <!-- <arg name="value" value="use_waypoint_coordenator:=true"/> -->
     </include>
 
     <include file="$(find durable_gazebo_simulation)/launch/atrvjr.launch"/>
