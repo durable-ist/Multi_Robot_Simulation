@@ -18,7 +18,6 @@ cd ~/catkin_ws/
 git clone https://github.com/durable-ist/Multi_Robot_Simulation.git
 cd Multi_Robot_Simulation
 git checkout ugvs
-catkin build
 ```
 ### Dependencies
 Open the terminal and run the following commands to install the dependencies required:
