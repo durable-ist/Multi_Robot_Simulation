@@ -51,6 +51,7 @@
       <pose> 0 0 0 0 0 0 </pose>
       <include>
         <uri>model://iris_camera</uri>
+        <!--<uri>model://iris_with_standoffs_demo</uri>-->
       </include>
     </model>
   </world>

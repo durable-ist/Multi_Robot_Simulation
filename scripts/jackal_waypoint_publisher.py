@@ -8,7 +8,8 @@ from move_base_msgs.msg import MoveBaseActionResult
 from geometry_msgs.msg import PoseStamped
 from std_msgs.msg import String
 ROBOT_NAME = "jackal"
-FRAME_ID = "world"
+# FRAME_ID = "world"
+# FRAME_ID = "jackal0/odom"
 
 class Waypoint_Publish:
 
@@ -40,6 +41,8 @@ class Waypoint_Publish:
       result_name = "/" + self.waypoints[i][0][0].rstrip("\n") + '/move_base/result'
       self.results.append(rospy.Subscriber(result_name, MoveBaseActionResult, self.result_handler))
 
+    print(self.result_dict)
+
   def movebase_goal(self, x, y, z, roll, pitch, yaw, frame):
     pose = PoseStamped()
     pose.pose.position.x = x
@@ -61,8 +64,8 @@ class Waypoint_Publish:
         name = line[0].rstrip("\n")
         continue
       else:
-        pose = self.movebase_goal(float(line[0]), float(line[1]), float(line[2]), float(line[3]), float(line[4]), float(line[5]), FRAME_ID)
-        print "publishing goal to " + name, pose
+        pose = self.movebase_goal(float(line[0]), float(line[1]), float(line[2]), float(line[3]), float(line[4]), float(line[5]), name + "/odom")
+        print("publishing goal to " + name, pose)
         publisher.publish(pose)
         while (self.result_dict[name] == False):
           pass
@@ -73,7 +76,7 @@ class Waypoint_Publish:
     for item in self.result_dict:
       if item in data.status.goal_id.id:
         self.result_dict[item] = True
-        print str(item) + " result handle detected"
+        print(str(item) + " result handle detected")
 
   def execute(self):
     threads = []

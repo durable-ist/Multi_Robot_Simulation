@@ -1,5 +1,5 @@
 <launch>
-    <param name="agriculture_geom" command="$(find xacro)/xacro --inorder '$(find durable_gazebo_simulation)/urdf/evora_farm.urdf.xacro'" />
+    <param name="agriculture_geom2" command="$(find xacro)/xacro --inorder '$(find durable_gazebo_simulation)/urdf/evora_farm.urdf.xacro'" />
 
     <arg name="platform" default="$(optenv CPR_GAZEBO_PLATFORM husky)" />
     <arg name="x" default="0.0"/>
@@ -10,7 +10,9 @@
     <arg name="use_sim_time" default="true" />
     <arg name="gui" default="true" />
     <arg name="headless" default="false" />
-    <arg name="world_name" default="$(find durable_gazebo_simulation)/worlds/evora_farm.world" />
+    <!-- <arg name="world_name" default="$(find durable_gazebo_simulation)/worlds/evora_farm.world" /> -->
+    <arg name="world_name" default="$(find durable_gazebo_simulation)/worlds/solar.world" />
+    <!-- <arg name="world_name" default="$(find durable_gazebo_simulation)/worlds/empty_world.world" /> -->
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
       <arg name="debug" value="0" />
       <arg name="gui" value="$(arg gui)" />
@@ -19,6 +21,6 @@
       <arg name="world_name" value="$(arg world_name)" />
     </include>
 
-    <node name="agriculture_world_spawner" pkg="gazebo_ros" type="spawn_model" args="-urdf -model agriculture_geom -param agriculture_geom -x 0 -y 0 -z 0 -Y 0" />
+    <node name="agriculture_world_spawner" pkg="gazebo_ros" type="spawn_model" args="-urdf -model agriculture_geom2 -param agriculture_geom2 -x 0 -y 0 -z 0 -Y 0" />
 
 </launch>

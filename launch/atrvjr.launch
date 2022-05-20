@@ -4,6 +4,7 @@
   <arg name="load_map" default="false"/>
   <arg name="map" default="ch3_sim"/>
   <arg name="ns" default="atrvjr/"/>
+  <arg name="launch_nav" default="true"/>
   
   <group ns="$(arg ns)"> 
     <!-- <param name="tf_prefix" value="/atrvjr" /> -->
@@ -24,6 +25,7 @@
     <!-- Launch of the common components to sim and real life. 
     load_map: false for navigation without map and true to import a map
     map: defines the name of the map to be used -->
+
     <include file="$(find atrvjr)/launch/bringup_common.launch">
       <arg name="load_map" default="$(arg load_map)"/>
       <arg name="ns" default="$(arg ns)"/>
