@@ -15,10 +15,14 @@
       <arg name="time" value="1" />
       <arg name="pkg" value="multi_jackal_tutorials" />
       <arg name="file" value="evora_jackal.launch" />
-      <!-- <arg name="value" value="use_waypoint_coordenator:=true"/> -->
+      <arg name="value" value="use_waypoint_coordenator:=true use_gps_pose_relay:=true use_navsat:=true cooperation_use:=true"/>
     </include>
 
-    <include file="$(find durable_gazebo_simulation)/launch/atrvjr.launch"/>
+    <include file="$(find durable_gazebo_simulation)/launch/atrvjr.launch">
+      <arg name="use_waypoint_coordenator" value="true" />
+      <arg name="use_gps_pose_relay" value="true" />
+      <arg name="cooperation_use" value="true" />
+    </include>
 
     <group>
        <node pkg="tf" type="static_transform_publisher" name="static_world_to_map_tf"

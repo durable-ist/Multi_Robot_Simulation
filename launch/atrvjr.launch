@@ -4,7 +4,26 @@
   <arg name="load_map" default="false"/>
   <arg name="map" default="ch3_sim"/>
   <arg name="ns" default="atrvjr/"/>
+  <arg name="use_waypoint_coordenator" default="false"/>
+  <arg name="use_gps_pose_relay" default="false"/>
+  <arg name="cooperation_use" default="false"/>
+
+  <group ns="$(arg ns)" if="$(arg cooperation_use)">
+    <include file="$(find cooperation_use)/launch/coordinator_atrvjr_sim.launch"/>
+  </group>
   
+  <group ns="$(arg ns)" if="$(arg use_waypoint_coordenator)">
+    <include file="$(find coordinates_waypoint_manager)/launch/coordinator_atrvjr_sim.launch"/>
+  </group>
+
+  <group ns="$(arg ns)" if="$(arg use_gps_pose_relay)">
+    <include file="$(find cooperation_use)/launch/gps_pose_relay.launch">
+      <arg name="gps_pose_topic_name" value="/$(arg ns)/gps/filtered"/>
+      <arg name="imu_topic_name" value="/$(arg ns)/imu/data"/>
+      <arg name="relay_result_topic_name" value="/$(arg ns)/geopose"/>
+    </include>
+  </group>
+
   <group ns="$(arg ns)"> 
     <!-- <param name="tf_prefix" value="/atrvjr" /> -->
     
